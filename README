@@ -1,0 +1,10 @@
+This is a server for serving sadis objects to ONOS.
+
+It provides a GET endpoint to retrieve objects, and a POST endpoint to add/update them.
+
+example curls:
+
+curl http://localhost:8888/subscriber/EC1721000218
+curl -X POST -H "Content-Type: application/json" -d '{"id":"EC1721000218","uplinkPort":"65536","hardwareIdentifier":"<mac address>","ipAddress":"<device ip>","nasId":"<nasId>"}'
+
+It is using aerospike as a data store.
