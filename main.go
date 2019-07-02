@@ -189,6 +189,7 @@ func main() {
 	router.HandleFunc("/subscriber", addSubscriberHandler).Methods("POST")
 	http.Handle("/", router)
 
+	log.Println("serving-port", port)
 	panic(http.ListenAndServe(fmt.Sprintf(":%d", port), router))
 
 }

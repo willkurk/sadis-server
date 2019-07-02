@@ -1,0 +1,6 @@
+dependencies:
+- name: aerospike
+  repository: https://kubernetes-charts.storage.googleapis.com
+  version: 0.2.8
+digest: sha256:1e25e0b7d0179cfacf8f1f94fb1a489c661e42c3be6a8a91f7a531793807794c
+generated: "2019-07-01T17:13:34.342933912-04:00"

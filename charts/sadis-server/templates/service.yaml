@@ -1,19 +1,19 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: {{ template "onos-subscriber-agent.fullname" . }}
+  name: {{ template "sadis-server.fullname" . }}
   labels:
-    app: {{ template "onos-subscriber-agent.name" . }}
-    chart: {{ template "onos-subscriber-agent.chart" . }}
+    app: {{ template "sadis-server.name" . }}
+    chart: {{ template "sadis-server.chart" . }}
     release: {{ .Release.Name }}
     heritage: {{ .Release.Service }}
 spec:
   type: {{ .Values.service.type }}
   ports:
     - port: {{ .Values.service.port }}
-      targetPort: http
+      targetPort: {{ .Values.sadis_server.port }}
       protocol: TCP
       name: http
   selector:
-    app: {{ template "onos-subscriber-agent.name" . }}
+    app: {{ template "sadis-server.name" . }}
     release: {{ .Release.Name }}

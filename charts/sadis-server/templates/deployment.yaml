@@ -1,22 +1,22 @@
 apiVersion: apps/v1beta2
 kind: Deployment
 metadata:
-  name: {{ template "onos-subscriber-agent.fullname" . }}
+  name: {{ template "sadis-server.fullname" . }}
   labels:
-    app: {{ template "onos-subscriber-agent.name" . }}
-    chart: {{ template "onos-subscriber-agent.chart" . }}
+    app: {{ template "sadis-server.name" . }}
+    chart: {{ template "sadis-server.chart" . }}
     release: {{ .Release.Name }}
     heritage: {{ .Release.Service }}
 spec:
   replicas: {{ .Values.replicaCount }}
   selector:
     matchLabels:
-      app: {{ template "onos-subscriber-agent.name" . }}
+      app: {{ template "sadis-server.name" . }}
       release: {{ .Release.Name }}
   template:
     metadata:
       labels:
-        app: {{ template "onos-subscriber-agent.name" . }}
+        app: {{ template "sadis-server.name" . }}
         release: {{ .Release.Name }}
     spec:
       containers:
@@ -24,11 +24,12 @@ spec:
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           command: ["/app"]
-          args: ["-kafka-brokers={{ .Values.kafka.brokers}}",
-          "-kafka-topic={{ .Values.kafka.topic }}",
-          "-onos-address={{ .Values.onos.address }}",
-          "-onos-user={{ .Values.onos.user }}",
-          "-onos-password={{ .Values.onos.password }}"] 
+          args: ["-port={{ .Values.sadis_server.port }}",
+          "-aeroIp={{ .Values.sadis_server.aerospike_address }}",
+          "-aeroPort={{ .Values.sadis_server.aerospike_port }}",
+          "-aeroNamespace={{ .Values.sadis_server.aerospike_namespace }}"]
+          ports:
+          - containerPort: 8080 
           resources:
 {{ toYaml .Values.resources | indent 12 }}
     {{- with .Values.nodeSelector }}

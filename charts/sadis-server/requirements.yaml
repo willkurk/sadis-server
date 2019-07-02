@@ -1,0 +1,6 @@
+dependencies:
+- name: aerospike
+  # Can be found with "helm search aerospike"
+  version: 0.2.8
+  repository: 'https://kubernetes-charts.storage.googleapis.com'
+

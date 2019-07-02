@@ -1,4 +1,4 @@
-# Default values for onos-subscriber-agent.
+# Default values for sadis-server.
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
 
@@ -13,13 +13,13 @@ service:
   type: ClusterIP
   port: 8080
 
-aerospike:
-  address: "aerospike"
-  port: "3000"
-  namespace: "test"
-
-sadis-server:
+sadis_server:
   port: "8080"
+  aerospike_address: "sadis-server-aerospike"
+  aerospike_port: "3000"
+  aerospike_namespace: "test"
+
+
 
 ingress:
   enabled: false
