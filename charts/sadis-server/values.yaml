@@ -19,6 +19,18 @@ sadis_server:
   aerospike_port: "3000"
   aerospike_namespace: "test"
 
+aerospike:
+  persistentVolume:
+    - mountPath: /opt/aerospike/data
+      name: aerospike-data
+      template:
+        accessModes: [ "ReadWriteOnce" ]
+        resources:
+          requests:
+            storage: "1G"
+        selector:
+          matchLabels:
+            diskname: "aerospike-data"
 
 
 ingress:
