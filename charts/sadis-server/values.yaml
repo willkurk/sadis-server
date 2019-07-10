@@ -10,8 +10,9 @@ image:
   pullPolicy: Always
 
 service:
-  type: ClusterIP
+  type: NodePort
   port: 8080
+  node_port: 30035
 
 sadis_server:
   port: "8080"
@@ -25,6 +26,7 @@ aerospike:
       name: aerospike-data
       template:
         accessModes: [ "ReadWriteOnce" ]
+        # storageClass: "my-local-storage"
         resources:
           requests:
             storage: "1G"

@@ -12,6 +12,7 @@ spec:
   ports:
     - port: {{ .Values.service.port }}
       targetPort: {{ .Values.sadis_server.port }}
+      nodePort: {{ .Values.service.node_port }}
       protocol: TCP
       name: http
   selector:
