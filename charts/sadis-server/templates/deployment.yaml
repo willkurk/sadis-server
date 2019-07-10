@@ -25,7 +25,7 @@ spec:
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           command: ["/app"]
           args: ["-port={{ .Values.sadis_server.port }}",
-          "-aeroIp={{ .Values.sadis_server.aerospike_address }}",
+          "-aeroIp={{ .Release.Name }}-{{ .Values.sadis_server.aerospike_address }}",
           "-aeroPort={{ .Values.sadis_server.aerospike_port }}",
           "-aeroNamespace={{ .Values.sadis_server.aerospike_namespace }}"]
           ports:

@@ -16,12 +16,12 @@ service:
 
 sadis_server:
   port: "8080"
-  aerospike_address: "sadis-server-aerospike"
+  aerospike_address: "aerospike"
   aerospike_port: "3000"
   aerospike_namespace: "test"
 
 aerospike:
-  persistentVolume:
+  persistentVolume: 
     - mountPath: /opt/aerospike/data
       name: aerospike-data
       template:
@@ -30,9 +30,9 @@ aerospike:
         resources:
           requests:
             storage: "1G"
-        selector:
-          matchLabels:
-            diskname: "aerospike-data"
+        # selector:
+          # matchLabels:
+            # diskname: "aerospike-data"
 
 
 ingress:
